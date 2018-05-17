@@ -1,4 +1,4 @@
-# Beginning Programming with C for Dummies
+# Mastering Python
 
 This repository was created to accompany the book "Mastering Python" ISBN: 978-1-78528-972-9.
 
