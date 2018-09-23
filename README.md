@@ -1,6 +1,6 @@
 # Mastering Python
 
-This repository was created to accompany the book "Mastering Python" ISBN: 978-1-78528-972-9.
+This repository was created to accompany the book "Learning Python" ISBN: 978-1-78355-171-2.
 
 This guide will closely follow the book and be broken in to smaller parts as needed. In some places the code may be "fixed", completed, or altered to better represent a complete picture of the code.
 
