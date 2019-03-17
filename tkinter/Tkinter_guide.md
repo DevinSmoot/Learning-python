@@ -1,4 +1,4 @@
-## TKinter Cheat Sheet
+## TKinter Guide
 
 Compiled from https://effbot.org (https://effbot.org/tkinterbook/tkinter-index.htm)
 
