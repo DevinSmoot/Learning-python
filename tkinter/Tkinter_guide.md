@@ -248,3 +248,52 @@ If this option isn’t set, the widget uses the same mouse pointer as its parent
 Note that some widgets, including the **Text** and **Entry** widgets, set this option by default.
 
 ![cursors](images/b151db152b02cbed2efbfa925b75b0a8.gif)
+
+---
+
+### Events and Bindings
+
+##### Capturing clicks in a window
+
+```
+from Tkinter import *
+
+root = Tk()
+
+def callback(event):
+    print "clicked at", event.x, event.y
+
+frame = Frame(root, width=100, height=100)
+frame.bind("<Button-1>", callback)
+frame.pack()
+
+root.mainloop()
+```
+
+In this example, we use the bind method of the frame widget to bind a callback function to an event called <Button-1>. Run this program and click in the window that appears. Each time you click, a message like “clicked at 44 63” is printed to the console window.
+
+##### Capturing keyboard events
+
+Keyboard events are sent to the widget that currently owns the keyboard focus. You can use the focus_set method to move focus to a widget:
+
+```
+from Tkinter import *
+
+root = Tk()
+
+def key(event):
+    print "pressed", repr(event.char)
+
+def callback(event):
+    frame.focus_set()
+    print "clicked at", event.x, event.y
+
+frame = Frame(root, width=100, height=100)
+frame.bind("<Key>", key)
+frame.bind("<Button-1>", callback)
+frame.pack()
+
+root.mainloop()
+```
+
+If you run this script, you’ll find that you have to click in the frame before it starts receiving any keyboard events.
