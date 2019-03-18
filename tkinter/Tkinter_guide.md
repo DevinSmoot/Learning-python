@@ -115,14 +115,18 @@ If you need to explicitly specify a color, you can use a string with the followi
 
 RR, GG, BB are hexadecimal representations of the red, green and blue values, respectively. The following sample shows how you can convert a color 3-tuple to a Tk color specification:
 
+```
 tk_rgb = "#%02x%02x%02x" % (128, 192, 200)
+```
 
 Tk also supports the forms “#RGB” and “#RRRRGGGGBBBB” to specify each value with 16 and 65536 levels, respectively.
 
 You can use the winfo_rgb widget method to translate a color string (either a name or an RGB specification) to a 3-tuple:
 
+```
 rgb = widget.winfo_rgb("red")
 red, green, blue = rgb[0]/256, rgb[1]/256, rgb[2]/256
+```
 
 Note that winfo_rgb returns 16-bit RGB values, ranging from 0 to 65535. To map them into the more common 0-255 range, you must divide each value by 256 (or shift them 8 bits to the right).
 
@@ -132,13 +136,10 @@ Widgets that allow you to display text in one way or another also allows you to 
 
 Fonts are usually specifed using the font widget option. Tkinter supports a number of different font descriptor types:
 
-    Font descriptors
-
-    User-defined font names
-
-    System fonts
-
-    X font descriptors
+- Font descriptors
+- User-defined font names
+- System fonts
+- X font descriptors
 
 With Tk versions before 8.0, only X font descriptors are supported (see below).
 
@@ -146,9 +147,9 @@ With Tk versions before 8.0, only X font descriptors are supported (see below).
 
 Starting with Tk 8.0, Tkinter supports platform independent font descriptors. You can specify a font as tuple containing a family name, a height in points, and optionally a string with one or more styles. Examples:
 
-("Times", 10, "bold")
-("Helvetica", 10, "bold italic")
-("Symbol", 8)
+`("Times", 10, "bold")`
+`("Helvetica", 10, "bold italic")`
+`("Symbol", 8)`
 
 To get the default size and style, you can give the font name as a single string. If the family name doesn’t include spaces, you can also add size and styles to the string itself:
 
@@ -176,10 +177,12 @@ In addition, Tk 8.0 allows you to create named fonts and use their names when sp
 
 The **tkFont** module provides a Font class which allows you to create font instances. You can use such an instance everywhere Tkinter accepts a font specifier. You can also use a font instance to get font metrics, including the size occupied by a given string written in that font.
 
+```
 tkFont.Font(family="Times", size=10, weight=tkFont.BOLD)
 tkFont.Font(family="Helvetica", size=10, weight=tkFont.BOLD,
 slant=tkFont.ITALIC)
 tkFont.Font(family="Symbol", size=8)
+```
 
 If you modify a named font (using the **config** method), the changes are automatically propagated to all widgets using the font.
 
@@ -297,3 +300,19 @@ root.mainloop()
 ```
 
 If you run this script, you’ll find that you have to click in the frame before it starts receiving any keyboard events.
+
+### Events
+
+##### Event formats
+
+**\<Button-1\>** - A mouse button is pressed over the widget. Button 1 is the leftmost button, button 2 is the middle button (where available), and button 3 the rightmost button. When you press down a mouse button over a widget, Tkinter will automatically “grab” the mouse pointer, and subsequent mouse events (e.g. Motion and Release events) will then be sent to the current widget as long as the mouse button is held down, even if the mouse is moved outside the current widget. The current position of the mouse pointer (relative to the widget) is provided in the **x** and **y** members of the event object passed to the callback.
+
+You can use **ButtonPress** instead of **Button**, or even leave it out completely: **\<Button-1\>**, **\<ButtonPress-1\>**, and **\<1\>** are all synonyms. For clarity, I prefer the **\<Button-1\>** syntax.
+
+**\<B1-Motion\>** - The mouse is moved, with mouse button 1 being held down (use B2 for the middle button, B3 for the right button). The current position of the mouse pointer is provided in the **x** and **y** members of the event object passed to the callback.
+
+**\<ButtonRelease-1\>** - Button 1 was released. The current position of the mouse pointer is provided in the **x** and **y** members of the event object passed to the callback.
+
+**\<Double-Button-1\>** - Button 1 was double clicked. You can use **Double** or **Triple** as prefixes. Note that if you bind to both a single click (**\<Button-1\>**) and a double click, both bindings will be called.
+
+**\<Enter\>** - The mouse pointer entered the widget (this event doesn’t mean that the user pressed the **Enter** key!).
