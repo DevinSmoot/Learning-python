@@ -7,6 +7,7 @@ This quickstart guide will help you get PyQt5 installed and begin designing a GU
 [QtGui Module](http://pyqt.sourceforge.net/Docs/PyQt4/qtgui.html)
 [Python GUI's with PyQt5](https://www.youtube.com/watch?v=ksW59gYEl6Q)
 [Create Python GUI Application using PyQt5 Designer with Python 3.6.3](https://www.youtube.com/watch?v=7SrD4l2o-uk)
+[Python PyQt5 UI Tutorial](https://www.youtube.com/watch?v=ohwpOVJpykw)
 
 ### Install
 
