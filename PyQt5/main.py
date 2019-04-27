@@ -6,8 +6,8 @@ from PyQt5.uic import loadUi #Required for this program
 
 class Life2Coding(QDialog): #Create class for eash dialog with name(type)
     def __init__(self): #Create initialization function
-        super(Life2Coding,self).__init__() #Intialize using name of dialog class defined as self
-        loadUi('life2coding.ui',self) #Load UI based on filename defined as self
+        super(Life2Coding,self).__init__() #Intialize using name of dialog class; defined as self
+        loadUi('life2coding.ui',self) #Load UI based on filename; defined as self
         self.setWindowTitle('Life2Coding PyQt5 Gui') #Set window title
         self.pushButton.clicked.connect(self.on_pushButton_clicked) #Create button click reference to call function; pushButton is object name; on_pushButton_clicked is function name
     @pyqtSlot() #Used to define a callable object; in this case the function for pushButton
